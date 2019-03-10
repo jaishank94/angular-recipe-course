@@ -1,0 +1,14 @@
+<div class="col-sm-6">
+  <a 
+  style="cursor: pointer;" 
+  [routerLink]="[index]" 
+  routerLinkActive="active"
+  class="">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="recipe.imagePath" alt="{{ recipe.name }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ recipe.name }}</h5>
+      </div>
+    </div>
+  </a>
+</div>

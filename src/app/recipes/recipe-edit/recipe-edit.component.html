@@ -1,0 +1,69 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="recipeForm">
+    <div class="row">
+      <div class="col-sm-12">
+          <button type="submit" [disabled]="!recipeForm.valid" class="btn btn-success">Save</button> | 
+          <button type="button" class="btn btn-info" (click)="onCancel()">Cancel</button>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" 
+            id="name" 
+            aria-describedby="name" 
+            placeholder="Name"
+            formControlName="name"
+            >
+          </div>
+          <div class="form-group">
+            <label for="amount">Image URL</label>
+            <input type="text" 
+            class="form-control" 
+            id="imagePath"
+            aria-describedby="amount"
+            placeholder="Image URL"
+            formControlName="imagePath"
+            #imagePath>
+          </div>
+          <img [src]="imagePath.value" alt="Get Image URl" style="width: 50%;" class="img-responsive">
+          <div class="form-group">
+            <label for="amount">Description</label>
+            <textarea
+            class="form-control" 
+            id="description"
+            row="6"
+            aria-describedby="description"
+            formControlName="description"
+            placeholder="Description">
+            </textarea>
+          </div>
+      </div>
+    </div>
+    <hr>
+    <h4>Ingredients</h4>
+    <hr>
+    <div class="row">
+        <div class="col-sm-12" formArrayName="ingredients">
+        <div *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index"
+              [formGroupName]="i"
+              >
+            <div class="form-group" 
+              >
+              <input type="text" class="form-control" 
+              id="name" 
+              formControlName="name"
+              aria-describedby="name" 
+              placeholder="Name">
+              <br>
+              <input type="number" 
+              class="form-control" 
+              id="amount"
+              formControlName="amount"
+              aria-describedby="amount"
+              placeholder="Amount"
+              >
+              <br>
+              <button type="button"  class="btn btn-danger" (click)="onDeleteIngredient(i)">Delete</button>
+            </div>
+            </div>
+            <button type="button"  class="btn btn-primary" (click)="onAddIngredient()">Add Ingredient</button>
+        </div>
+      </div>
+</form>

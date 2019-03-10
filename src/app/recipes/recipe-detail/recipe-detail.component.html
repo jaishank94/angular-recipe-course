@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-lg-">
+    <h3>{{ recipe.name }} Information</h3>
+    <hr>
+    <div class="card text-center" style="width: 18rem;">
+      <img class="card-img-top" [src]="recipe.imagePath" alt="{{ recipe.name }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ recipe.name }}</h5>
+        <p class="card-text">{{ recipe.description }}</p>
+      </div>
+      <div class="card-body">
+        <a style="cursor: pointer;" class="card-link" (click)="onEditRecipe()">Edit</a>
+        <a style="cursor: pointer;" class="card-link" (click)="onDeleteRecipe()">Delete</a>
+        <a style="cursor: pointer;" class="card-link" (click)="onAddToShoppingList()"> Add to List</a>
+      </div>
+    </div>
+    <hr>
+    <div class="card text-center" style="width: 18rem;">
+      <div class="card-header">
+        Ingredients
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} <span class="badge badge-info">{{ ingredient.amount }}</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
